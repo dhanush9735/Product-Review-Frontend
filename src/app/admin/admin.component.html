@@ -1,0 +1,98 @@
+<div class="table-users">
+    <div class="header">Product List</div>
+    <div class="search-p">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search category" >
+    </div>
+      <table cellspacing="0">
+        <thead>
+       <tr>
+        <th>Image</th>
+        <th width=100 scope="col" [appSort]="product" data-order="desc" data-name="productId"> productId </th>
+        <th width=100 scope="col" [appSort]="product" data-order="desc" data-name="productName"> productName</th>
+        <th width=100 scope="col" [appSort]="product" data-order="desc" data-name="productPrice"> productPrice</th>
+        <th width=100 scope="col" [appSort]="product" data-order="desc" data-name="category"> category</th>
+
+        <th> Actions </th>
+       </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let p of product | filter:searchText | paginate:{
+                itemsPerPage:7,
+                currentPage:p} " >
+                <td><img [src]="p.productUrl" class="images"></td>
+                <td> {{ p.productId }} </td>
+                <td> {{ p.productName }} </td>
+                <td> {{ p.productPrice }} </td>
+                <td> {{ p.category }} </td>
+                
+                
+                
+            
+                
+
+                <td>
+                    <div class="container">
+                         Add
+                        <span class="glyphicon glyphicon-comment"  (click) = "addFeedback(p.productId)"></span>
+                        &nbsp;
+                         <!-- Delete
+                        <span class="glyphicon glyphicon-trash"  (click) = "deleteProduct(p.productId)"></span>
+                        &nbsp; -->
+                         <!-- Edit
+                        <span class="glyphicon glyphicon-edit"  (click) = "updateproduct(p.productId)"></span>
+                        &nbsp; -->
+                        
+                        View
+                        <span class="	glyphicon glyphicon-eye-open"  (click) = "getFeedBackByProductId(p.productId)"></span>
+                        &nbsp;
+
+                        Avg Rating
+                        <span class="	glyphicon glyphicon-star"  (click) = "avgRating(p.productId)"></span>
+                        &nbsp;
+
+            
+
+                      </div>
+                </td>
+
+
+        </tbody>
+       
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+ </div>
+<!-- <router-outlet></router-outlet> -->
+<!-- <html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Document</title>
+ </head>
+ <body>
+   <nav class="navbar">
+     <div class="logo">Product Review</div>
+     <ul class="nav-links">
+     
+       <div class="menu">
+         <li>Home</li>
+          <li><a href="/">About</a></li> 
+         <li class="services">
+           <a href="/">Services</a>
+           <ul class="dropdown">
+             <li><a routerLink="product-list" routerLinkActive="active" class="nav-link" >Product List</a></li>
+             <li><a routerLink="create-product" routerLinkActive="active" class="nav-link" >Add Product</a></li>
+             <li><a routerLink="create-feedback" routerLinkActive="active" class="nav-link" >Add Feedback</a></li>
+             <li><a routerLink="registration" routerLinkActive="active" class="nav-link" >Register User</a></li>
+            </ul>
+         </li>
+         <li> <a routerLink="feedback-details" routerLinkActive="active" class="nav-link" >Feedback-details</a></li>
+        
+         <li> <a routerLink="feedback-list" routerLinkActive="active" class="nav-link" >FeedBack List</a></li>
+        
+       </div>
+     </ul>
+    </nav>
+ </body>
+</html> -->
+<!-- <router-outlet></router-outlet> -->
